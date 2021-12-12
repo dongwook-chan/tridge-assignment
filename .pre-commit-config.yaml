@@ -13,4 +13,4 @@ repos:
         entry: env/bin/pytest
         language: python
         types: [python]
-
+        pass_filenames: false
