@@ -38,19 +38,18 @@ class TabularDowCounter(DowCounter):
                                 [170, 171, 172, 172, 172, 170, 173]]
 
     def count_dow_of_first_day_in_month(self) -> List[int]:
-        return TabularDowCounter.dow_for_century_modulo_4[self.century % 4]
+        return self.dow_for_century_modulo_4[self.century % 4]
 
 
 class FormulaDowCounter(DowCounter):
     dow_for_month = [-1, 6, 2, 1, 4, 6, 2, 4, 0, 3, 5, 1, 3]
 
-    @staticmethod
-    def get_day_of_week(year: int, month: int, day: int) -> int:
+    def get_day_of_week(self, year: int, month: int, day: int) -> int:
         if (month < 3):
             year -= 1
 
         return ((year + year // 4 - year // 100 + year // 400 +
-                 FormulaDowCounter.dow_for_month[month] + day) % 7)
+                 self.dow_for_month[month] + day) % 7)
 
 
 class BruteForceDowCounter(DowCounter):
@@ -67,7 +66,7 @@ class BruteForceDowCounter(DowCounter):
     def get_days_in_month(self, year: int, month: int) -> int:
         if self._is_leap(year) and month == 2:
             return 29
-        return BruteForceDowCounter.days_in_month[month]
+        return self.days_in_month[month]
 
     def get_day_of_week(self, year: int, month: int, day: int) -> int:
         prev_dow = dow = self.prev_dow
