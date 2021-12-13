@@ -94,18 +94,18 @@ counter_map = [TabularDowCounter, FormulaDowCounter, BruteForceDowCounter,
 def main():
     description = "Count months starting on Sunday in the input century."
     parser = argparse.ArgumentParser(description=description)
-    parser.add_argument('--mode', nargs='?', default=0,
+    parser.add_argument('--mode', nargs=1, default=0,
                         type=int, metavar="[0-3]", choices=range(0, 4),
                         help='Input mode to determine algorithm')
-    parser.add_argument('--century', nargs='?', default=20,
-                        type=int, metavar=">=1",
+    parser.add_argument('--century', nargs=1, default=[20],
+                        type=int, metavar=">=1", choices=range(0, 10000),
                         help='Input a century to inspect (default: 20)')
     args = parser.parse_args()
 
-    dow_counter_class = counter_map[args.mode]
-    dow_counter = dow_counter_class(args.century)
+    dow_counter_class = counter_map[args.mode[0]]
+    dow_counter = dow_counter_class(args.century[0])
     answer = dow_counter.months_starting_on_sunday()
-    print((f"The number of months starting on sunday in {args.century}th "
+    print((f"The number of months starting on sunday in {args.century[0]}th "
            f"century is;\n{answer}"))
 
 
