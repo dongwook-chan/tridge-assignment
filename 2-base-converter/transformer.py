@@ -22,6 +22,8 @@ class Transformer(object):
         return int(self._convert(s, self.digits, self.decimal_digits))
 
     def _convert(self, number, fromdigits, todigits):
+        """Convert number expressed in fromdigits to base N number
+           expressed in todigits"""
         from_base = len(fromdigits)
         to_base = len(todigits)
 
@@ -81,6 +83,7 @@ class Transformer(object):
 
 
 def main():
+    """main function to parse keyword arguments and perform transformation"""
     description = ("Convert numbers from base 10 integers "
                    "to base N strings and back again.")
     parser = argparse.ArgumentParser(description=description)
