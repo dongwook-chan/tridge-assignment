@@ -63,14 +63,14 @@ class BruteForceDowCounter(DowCounter):
     def _is_leap(year: int) -> bool:
         return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
 
-    def get_days_in_month(self, year: int, month: int) -> int:
+    def _get_days_in_month(self, year: int, month: int) -> int:
         if self._is_leap(year) and month == 2:
             return 29
         return self.days_in_month[month]
 
     def get_day_of_week(self, year: int, month: int, day: int) -> int:
         prev_dow = dow = self.prev_dow
-        dow += self.get_days_in_month(year, month)
+        dow += self._get_days_in_month(year, month)
         dow %= 7
         self.prev_dow = dow
 
