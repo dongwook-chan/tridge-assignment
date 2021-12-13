@@ -3,11 +3,6 @@ from typing import List
 from dow_counter import DowCounter, StdLibDowCounter
 
 
-error_template = ("incorrect solution of {class_name} for "
-                  "{century}th century: {solution}\n"
-                  "correct answer: {answer}\n")
-
-
 def counters_to_test(
         century: int, counter_to_ignore: List[str] = []) -> List[object]:
     counter_to_ignore.append('StdLibDowCounter')
