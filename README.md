@@ -9,7 +9,7 @@ $ git clone https://github.com/dongwook-chan/tridge-assignment
 $ cd tridge-assignment
 $ python3 -m venv env
 $ source env/bin/activate
-$ python3 -m pip install -r requirements.txt
+(env) $ python3 -m pip install -r requirements.txt
 ```
 
 ## Technologies and Packages Used
@@ -18,3 +18,8 @@ $ python3 -m pip install -r requirements.txt
 * flake8
 * pytest
 * numpy
+
+
+## Solution for Assignment
+
+Please refer to README.md in each directory for assignment.
